@@ -1,0 +1,6 @@
+site_name: Parrot Mambo Notes
+theme: readthedocs
+site_author: Mark Mazumder
+copyright: "2018 Mark Mazumder"
+markdown_extensions:
+- admonition
