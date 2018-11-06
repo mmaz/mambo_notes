@@ -1,5 +1,11 @@
 site_name: Parrot Mambo Notes
-theme: readthedocs
+theme: 
+    name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - shell
+        - python
+
 site_author: Mark Mazumder
 copyright: "2018 Mark Mazumder"
 markdown_extensions:
