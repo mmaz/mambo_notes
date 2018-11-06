@@ -1,2 +1,1 @@
-# mambo_notes
-Parrot Mambo Notes
+http://mmaz.github.io/mambo_notes
