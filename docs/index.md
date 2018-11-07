@@ -20,7 +20,8 @@ There are a few options available for camera access. (This is a non-exhaustive l
 1. The downward camera is currently available in Matlab (see Piazza for details, link to be added)
 2. Options for directly accessing the front camera stream in Matlab are being explored (more information to come...)
 3. The Python library [`pyparrot`](https://pyparrot.readthedocs.io/en/latest/) has [documentation on accessing the downward camera](https://pyparrot.readthedocs.io/en/latest/quickstartminidrone.html#demo-of-the-ground-facing-camera). Note the docs state that this is only available in wifi-mode (not bluetooth-mode).
-4. [GStreamer](https://gstreamer.freedesktop.org/documentation/), a Linux command-line-tool, supports front-camera access (including from within python)
+4. PyParrot also has a front camera example [here](https://github.com/amymcgovern/pyparrot/blob/master/examples/demoMamboVisionGUI.py)
+5. [GStreamer](https://gstreamer.freedesktop.org/documentation/), a Linux command-line-tool, supports front-camera access (including from within python)
 
 I (Mark) have been using GStreamer from within Python, which the documentation below will explain in some more detail.
 
