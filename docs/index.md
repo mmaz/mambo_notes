@@ -1,9 +1,9 @@
-# Parrot Mambo Notes (MIT 16.30/16.31)
+# Parrot Mambo Notes (MIT 16.30/16.31, Fall 2018)
 
-The following notes may help you connect to the front and/or downward camera for initial experimentation and projects.
+The following notes may be helpful for connecting to the front and/or downward camera for initial experimentation and projects.
 
-!!! warning "Documentation is in-progress!"
-    *Do you have tips, resources, or corrections to add? Did you find something frustrating or unhelpful and want to remove it?* [Issues and pull-requests are welcome!](https://github.com/mmaz/mambo_notes/issues)
+!!! warning "This documentation is in-progress!"
+    *Do you have tips, resources, or corrections to add? Did you find something frustrating or unhelpful and want to remove it? Notice any typos?*  [This documentation page can be edited on GitHub!](https://github.com/mmaz/mambo_notes/blob/master/docs/index.md) (Also, feel free to [post an issue](https://github.com/mmaz/mambo_notes/issues)).
 
 ## Overview
 
@@ -22,7 +22,7 @@ There are a few options available for camera access. (This is a non-exhaustive l
 3. The Python library [`pyparrot`](https://pyparrot.readthedocs.io/en/latest/) has [documentation on accessing the downward camera](https://pyparrot.readthedocs.io/en/latest/quickstartminidrone.html#demo-of-the-ground-facing-camera). Note the docs state that this is only available in wifi-mode (not bluetooth-mode).
 4. [GStreamer](https://gstreamer.freedesktop.org/documentation/), a Linux command-line-tool, supports front-camera access (including from within python)
 
-I (Mark) have been using GSteamer from within Python, which the documentation below will explain in some more detail.
+I (Mark) have been using GStreamer from within Python, which the documentation below will explain in some more detail.
 
 For projects using the cameras, I highly recommend starting with a few representative data-collects. For instance, if you wanted to track a person, begin by recording some videos from the drone's camera. For instance, record some videos of one person in frame, multiple people in frame, and videos without people. Record videos with the drone flying or with the drone hand-carried. You can use GStreamer for all these collects. Then, these files can be used for exploration and testing without needing to rely on the short battery life of the drone.
 
@@ -43,7 +43,7 @@ To connect via GStreamer you will need to connect to your drone over WiFi. Power
 !!! danger "Caveat"
     WiFi connections to the drone are flaky in my experience. This connection process takes multiple tries on my drone (within 4-5 tries usually, but up to 10). I usually pull the battery out and re-insert for each try. 
 
-The network SSID will be called, e.g., `Mambo_12345`, with an ID# corresponding to your drone. Once you are connected, you can use gsteamer to test streaming an image to your computer (on the command line, without python) or connect to the stream within python.
+The network SSID will be called, e.g., `Mambo_12345`, with an ID# corresponding to your drone. Once you are connected, you can use gstreamer to test streaming an image to your computer (on the command line, without python) or connect to the stream within python.
 
 !!! warning "re-connecting not supported?"
     I usually have to restart the drone in between camera stream connections, i.e., I can't test the connection with gstreamer on the command line, and then start a processing script in python.
