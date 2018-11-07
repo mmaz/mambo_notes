@@ -21,21 +21,26 @@ There are a few options available for camera access. (This is a non-exhaustive l
 2. Options for directly accessing the front camera stream in Matlab are being explored (more information to come...)
 3. The Python library [`pyparrot`](https://pyparrot.readthedocs.io/en/latest/) has [documentation on accessing the downward camera](https://pyparrot.readthedocs.io/en/latest/quickstartminidrone.html#demo-of-the-ground-facing-camera). Note the docs state that this is only available in wifi-mode (not bluetooth-mode).
 4. PyParrot also has a front camera example [here](https://github.com/amymcgovern/pyparrot/blob/master/examples/demoMamboVisionGUI.py)
-5. [GStreamer](https://gstreamer.freedesktop.org/documentation/), a Linux command-line-tool, supports front-camera access (including from within python)
+5. [GStreamer](https://gstreamer.freedesktop.org/documentation/), a video streaming tool, supports front-camera access (including from within python)
+    * GStreamer is available on Windows, Mac, and Linux
+    * If setting up GStreamer (and optionally, OpenCV) is cumbersome on Mac and Windows, you might consider an Ubuntu Virtual Machine.
 
-I (Mark) have been using GStreamer from within Python, which the documentation below will explain in some more detail.
+I (Mark) use GStreamer, which the documentation below will explain in some more detail.
 
-For projects using the cameras, I highly recommend starting with a few representative data-collects. For instance, if you wanted to track a person, begin by recording some videos from the drone's camera. For instance, record some videos of one person in frame, multiple people in frame, and videos without people. Record videos with the drone flying or with the drone hand-carried. You can use GStreamer for all these collects. Then, these files can be used for exploration and testing without needing to rely on the short battery life of the drone.
+For projects using the cameras, I recommend starting with a few representative **data-collects**. For instance, if you wanted to track a person, begin by recording some videos from the drone's camera. For instance, videos of: (a) one person in frame, (b) multiple people in frame, and (c) without people. Include videos with the drone flying or with the drone hand-carried, since some motion-blur will result. You can use GStreamer for all these collects. Then, these files can be used for exploration and testing without needing to rely on the short battery life of the drone.
+
 
 ## Installing GStreamer
 
-To install GStreamer on Linux, you can follow [the instructions in their documentation](https://gstreamer.freedesktop.org/documentation/installing/on-linux.html). On Ubuntu, I used this command (taken from the above documentation):
+To install GStreamer, you can follow [the instructions in their documentation](https://gstreamer.freedesktop.org/documentation/installing/on-linux.html). On Ubuntu, I used this command (taken from the above documentation):
 
 ```shell
 $ sudo apt-get install libgstreamer1.0-0 gstreamer1.0-plugins-base \ 
    gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \ 
    gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools
 ```
+
+There are also instructions for [Windows](https://gstreamer.freedesktop.org/documentation/installing/on-windows.html) and [Mac](https://gstreamer.freedesktop.org/documentation/installing/on-mac-osx.html). GStreamer is also available via `homebrew` on OSX which may be easier than building from source.
 
 ## WiFi access to the Mambo
 
@@ -51,7 +56,7 @@ The network SSID will be called, e.g., `Mambo_12345`, with an ID# corresponding 
 
 ## Viewing the front camera  with GStreamer
 
-After you have installed gstreamer and connected to your drone's wifi access point, you should be able to use the following command which opens a new window on your laptop to view the drone's camera feed:
+After you have installed gstreamer and connected to your drone's wifi access point, you should be able to use the following command (tested in Linux) which opens a new window on your laptop to view the drone's camera feed:
 
 ```bash
 gst-launch-1.0 rtspsrc location=rtsp://192.168.99.1/media/stream2 latency=10 ! decodebin ! autovideosink
@@ -76,7 +81,7 @@ You can specify your preferred filename at the end of the above command (e.g., `
 !!! Note
     This is optional - if you just want to test with GStreamer, for instance, to record a video from the front camera, you don't need to use OpenCV.
 
-OpenCV will allow you to access the front camera stream programmatically (e.g., via python or c++).
+OpenCV will allow you to access the front camera stream programmatically (e.g., via python or c++). OpenCV is also available for Windows, Mac, and Linux. *The following instructions pertain to building OpenCV on Linux.*
 
 However (as far as I know), most prepackaged versions of OpenCV (e.g., the one you'll find via `apt-get`, `pip`, or `conda`) do not come with internal support for GStreamer. You'll have to download and compile OpenCV with support for GStreamer yourself.
 
